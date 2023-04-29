@@ -6,10 +6,18 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "reset": "rm -rf .nuxt node_modules .output package-lock.json && npm install"
   },
   "devDependencies": {
     "@types/node": "^18",
-    "nuxt": "^3.4.2"
+    "nuxt": "^3.4.2",
+    "sass": "^1.62.0",
+    "vuetify": "^3.1.15"
+  },
+  "dependencies": {
+    "gsap": "^3.11.5",
+    "vite-plugin-vuetify": "^1.0.2",
+    "vue-i18n": "9"
   }
 }

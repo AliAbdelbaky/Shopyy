@@ -1,0 +1,200 @@
+@font-face {
+  font-family: "Approach";
+  src: url(~/assets/fonts/Approach/Approach.otf) format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(~/assets/fonts/Inter/Inter.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Swisser";
+  src: url(~/assets/fonts/Swissra/SwissraUltraLight.otf) format("truetype");
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Swisser";
+  src: url(~/assets/fonts/Swissra/Swissra_Light.otf) format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Swisser";
+  src: url(~/assets/fonts/Swissra/Swissra_Normal.otf) format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Swisser";
+  src: url(~/assets/fonts/Swissra/Swissra_Medium.otf) format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Swisser";
+  src: url(~/assets/fonts/Swissra/Swissra_Heavy.otf) format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Swisser";
+  src: url(~/assets/fonts/Swissra/Swissra_Bold.otf) format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Swisser";
+  src: url(~/assets/fonts/Swissra/Swissra_Black.otf) format("truetype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+:root {
+  --primary: #fff000;
+  --primary-rgb: 255, 240, 0;
+
+  --secondary: #07090d;
+  --secondary-rgb: 7, 9, 13;
+
+  --third: #ffffff;
+  --third-rgb: 255, 255, 255;
+
+  --accent: #000000;
+  --accent-rgb: 0, 0, 0;
+
+  --bg: #f0f0f0;
+  --bg-rgb: 240, 240, 240;
+
+  --info: #1491e6;
+  --info-rgb: 20, 145, 230;
+
+  --error: #9f2b2b;
+  --error-rgb: 159, 43, 43;
+
+  --warning: #faad14;
+  --warning-rgb: 250, 173, 20;
+
+  --success: #4e8d12;
+  --success-rgb: 78, 141, 18;
+
+  --font-ar: Swisser;
+  --font-en: Inter, sans-serif;
+
+  --font-base-size: 1rem;
+
+  --font-sm-size: 0.8rem;
+  --font-xsm-size: 0.7rem;
+
+  --font-lg-size: 1.7rem;
+  --font-xlg-size: 2.1rem;
+}
+
+.dark {
+  --primary: #ffffff;
+  --primary-rgb: 255, 255, 255;
+
+  --secondary: #e0e0e0;
+  --secondary-rgb: 224, 224, 224;
+
+  --bg: #0c0c0c;
+  --bg-rgb: 12, 12, 12;
+}
+
+html {
+  scroll-behavior: smooth;
+  color: rgba(red, green, blue, alpha);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-size: var(--font-base-size);
+  text-align: start;
+  background-color: var(--bg);
+}
+
+html[dir="rtl"],
+html[lang="ar"] * {
+  font-family: var(--font-ar);
+}
+html[dir="ltr"],
+html[lang="en"] * {
+  font-family: var(--font-en);
+}
+
+@media only screen and (max-width: 992px) {
+  .v-application,
+  body,
+  html {
+    font-size: var(--font-sm-size) !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .v-application,
+  body,
+  html {
+    font-size: var(--font-xsm-size) !important;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  margin: 0;
+}
+
+/* ######################### */
+
+p {
+  font-size: var(--font-base-size);
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0rem;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
+}
+.title {
+  font-family: Approach !important;
+}
+.subtitle {
+  font-family: Inter !important;
+}
+
+

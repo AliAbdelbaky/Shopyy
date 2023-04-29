@@ -1,0 +1,13 @@
+@import './modules/taillwind.css';
+@import './modules/base.css';
+
+.title-style {
+  @apply tw-text-5xl md:tw-text-7xl tw-text-center tw-mx-0 tw-my-9 tw-text-secondary tw-w-full md:tw-m-14 md:tw-max-w-[700px] md:tw-mx-auto;
+}
+.swiper-container-free-mode .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.v-input__details .v-messages[role='alert']{
+  color: #dc5034 !important;
+}
