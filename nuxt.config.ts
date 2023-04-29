@@ -25,11 +25,11 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["@/assets/css/main.css"],
+  css: ["vuetify/styles", "@/assets/css/main.css"],
   typescript: { shim: false },
   build: { transpile: ["vuetify"] },
   modules: [
-    '@pinia/nuxt',
+    "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     async (options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) =>

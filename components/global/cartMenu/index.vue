@@ -1,5 +1,5 @@
 <template>
-  <div class="usermenu">
+  <div class="cart">
     <v-menu
       open-on-hover
       v-model="menu"
@@ -8,7 +8,7 @@
     >
       <template v-slot:activator="{ props }">
         <v-btn color="primary" icon v-bind="props" size="small">
-          <v-icon icon="mdi-account-settings-outline"></v-icon>
+          <v-btn icon="mdi-shopping-outline" size="small" />
         </v-btn>
       </template>
 
@@ -72,4 +72,4 @@ const message = ref(false);
 const hints = ref(true);
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

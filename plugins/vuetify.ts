@@ -48,8 +48,8 @@ const dark: ThemeDefinition = {
 const messages = { ar, en };
 
 const locale = {
-  locale: "ar",
-  fallback: "en",
+  locale: "en",
+  fallback: "ar",
   messages,
 };
 const theme = {
