@@ -12,8 +12,6 @@ export default function () {
       }
     };
     locale.value = lang;
-    // current.value = lang;
-    // isRtl.value = lang == "ar" ? true : false;
     localStorage.setItem("lang", lang);
     if (typeof document !== "undefined") {
       document.querySelector("html")?.setAttribute("lang", lang);

@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "Approach";
   src: url(~/assets/fonts/Approach/Approach.otf) format("truetype");
   font-style: normal;
@@ -60,7 +60,7 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-}
+} */
 
 :root {
   --primary: #fff000;

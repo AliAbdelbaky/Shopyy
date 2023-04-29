@@ -10,6 +10,7 @@
     "reset": "rm -rf .nuxt node_modules .output package-lock.json && npm install"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.6.7",
     "@types/node": "^18",
     "nuxt": "^3.4.2",
     "sass": "^1.62.0",
