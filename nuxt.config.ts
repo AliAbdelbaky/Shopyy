@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   typescript: { shim: false },
   build: { transpile: ["vuetify"] },
   modules: [
+    '@pinia/nuxt',
     "@nuxtjs/tailwindcss",
     async (options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) =>
@@ -37,13 +38,4 @@ export default defineNuxtConfig({
       );
     },
   ],
-  // modules: ["@nuxtjs/tailwindcss"],
-  // build: {
-  //   transpile: ["vuetify"],
-  // },
-  // vite: {
-  //   define: {
-  //     "process.env.DEBUG": false,
-  //   },
-  // },
 });

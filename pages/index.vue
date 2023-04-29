@@ -5,11 +5,10 @@
       <v-btn @click="setlang(locale === 'ar' ? 'en' : 'ar')">
         {{ t("hello") }}
       </v-btn>
-      <v-btn @click="toggleTheme">
+      <v-btn @click="toggleTheme" color="primary">
         {{ theme.name }}
       </v-btn>
     </div>
-    <NuxtWelcome />
   </div>
 </template>
 <script setup lang="ts">
