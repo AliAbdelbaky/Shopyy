@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    {{ ProductData }}
+  <v-card :title="productData.title">
+    {{ productData.desc }}
   </v-card>
 </template>
 
@@ -8,7 +8,7 @@
 import { SingleProduct } from "~/assets/types/product.type";
 
 interface Props {
-  ProductData: SingleProduct;
+  productData: SingleProduct;
 }
 // @ts-ignore
 const props = defineProps<Props>();

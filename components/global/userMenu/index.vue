@@ -7,9 +7,7 @@
       location="end"
     >
       <template v-slot:activator="{ props }">
-        <v-btn color="primary" icon v-bind="props" size="small">
-          <v-icon icon="mdi-account-settings-outline"></v-icon>
-        </v-btn>
+        <v-btn color="primary" icon="mdi-account-settings-outline" v-bind="props" size="small" />
       </template>
 
       <v-card min-width="300">

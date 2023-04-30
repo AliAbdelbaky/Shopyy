@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <h2 class="tw-text-primary">hii</h2>
-    <Product />
-  </div>
+  <Product />
 </template>
 
 <script setup lang="ts">
