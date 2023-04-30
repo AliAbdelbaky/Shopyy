@@ -48,14 +48,14 @@ const fetchData = async () => {
     const { status, data, code } = await useRequest(true).get(
       "products?limit=10"
     );
-    state.data.items = data.data;
+    if (data && data.data.length) {
+      state.data.items = data.data;
+    }
     state.loading = false;
   } catch (err) {
     console.log(err);
     state.loading = false;
   }
-
-  // console.log(data, status, code, "sdsdsds");
 };
 const { state } = useProductHandler();
 
