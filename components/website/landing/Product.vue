@@ -1,5 +1,5 @@
 <template>
-  <BaseContainer>
+  <div>
     <h2 class="tw-text-8xl tw-uppercase tw-text-center tw-mb-7">Products</h2>
     <template v-if="state.loading">
       <div class="q-pa-md example-row-equal-width">
@@ -38,18 +38,16 @@
     </template>
     <template v-else-if="!state.loading && state.data.items.length > 0">
       <div class="q-pa-md example-row-equal-width">
-        <div class="row">
-          <!-- <q-no-ssr> -->
-            <q-intersection
-              v-for="(item, index) in state.data.items"
-              :key="index"
-              once
-              transition="jump-up"
-              class="example-item col-12 col-md-4 col-lg-3 tw-p-2"
-            >
-              <ProductCard :productData="item" />
-            </q-intersection>
-          <!-- </q-no-ssr> -->
+        <div class="row tw-px-0">
+          <q-intersection
+            v-for="(item, index) in state.data.items"
+            :key="index"
+            once
+            transition="jump-up"
+            class="example-item col-12 col-md-4 col-lg-3"
+          >
+            <ProductCard :productData="item" />
+          </q-intersection>
         </div>
       </div>
     </template>
@@ -91,13 +89,12 @@
         </div>
       </div>
     </template>
-  </BaseContainer>
+  </div>
 </template>
 
 <script setup lang="ts">
 // @ts-ignore
 import { onBeforeMount } from "vue";
-import BaseContainer from "~/components/global/BaseContainer.vue";
 // @ts-ignore
 import ProductCard from "~/components/website/shared/ProductCard.vue";
 import useRequest from "~/composables/helpers/useApi";
@@ -124,8 +121,4 @@ onBeforeMount(() => {
   fetchData();
 });
 </script>
-<style lang="sass" scoped>
-.example-item
-  height: 100%
-  width: 290px
-</style>
+

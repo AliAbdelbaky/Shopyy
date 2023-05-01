@@ -1,12 +1,23 @@
 <template>
   <div>
-    <div class="tw-flex tw-items-center tw-justify-between">
-      <v-btn icon size="small" @click="setlang(locale === 'ar' ? 'en' : 'ar')">
-        {{ locale === "ar" ? "en" : "ar" }}
-      </v-btn>
-      <v-btn @click="toggleTheme" color="primary" icon size="small">
-        <v-icon icon="mdi-theme-light-dark" />
-      </v-btn>
+    <div class="tw-flex tw-items-center tw-gap-3 tw-justify-between">
+      <q-btn
+        @click="setlang(locale === 'ar' ? 'en' : 'ar')"
+        flat
+        dense
+        aria-label="language"
+        round
+      >
+        {{ locale === "ar" ? "en" : "ar" }}</q-btn
+      >
+      <q-btn
+        @click="toggleTheme"
+        flat
+        dense
+        aria-label="Theme"
+        round
+        icon="mdi-theme-light-dark"
+      />
     </div>
   </div>
 </template>

@@ -1,32 +1,33 @@
+import { useQuasar } from "quasar";
+
 export default function () {
-  // const theme = useTheme();
+  const { dark } = useQuasar();
 
   const toggleTheme = () => {
-    // toggle theme for vueify first  1
-    // theme.global.name.value = theme.global.current.value.dark
-    //   ? "light"
-    //   : "dark";
-    // toggle theme for tailliwnd css 2
-    // document
-    //   .querySelector("body")
-    //   ?.classList.remove(theme.global.current.value.dark ? "light" : "dark");
-    // document
-    //   .querySelector("body")
-    //   ?.classList.add(theme.global.current.value.dark ? "dark" : "light");
-    // save theme data
-    // localStorage.setItem(
-    //   "theme",
-    //   theme.global.current.value.dark ? "dark" : "light"
-    // );
+    // 1 toggle theme for Quasar
+
+    dark.set(!dark.isActive);
+    console.log(dark);
+    // 2 toggle theme for tailliwnd
+    // console.log(document.body.classList);
+    // document.body.classList.
+    document
+      .querySelector("body")
+      ?.classList.remove(dark.isActive ? "light" : "dark");
+    document
+      .querySelector("body")
+      ?.classList.add(dark.isActive ? "dark" : "light");
+    // // 3 save theme data
+    // localStorage.setItem("theme", themeIsDark ? "dark" : "light");
   };
 
   const setTheme = (globalTheme: "dark" | "light") => {
-    // theme.global.name.value = globalTheme;
+    dark.set(globalTheme === "dark");
     document
       .querySelector("body")
       ?.classList.remove(globalTheme == "dark" ? "light" : "dark");
     document.querySelector("body")?.classList.add(globalTheme);
   };
 
-  return { toggleTheme, setTheme };
+  return { toggleTheme, setTheme, dark };
 }
