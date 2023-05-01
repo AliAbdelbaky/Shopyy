@@ -39,17 +39,17 @@
     <template v-else-if="!state.loading && state.data.items.length > 0">
       <div class="q-pa-md example-row-equal-width">
         <div class="row">
-          <q-no-ssr>
+          <!-- <q-no-ssr> -->
             <q-intersection
               v-for="(item, index) in state.data.items"
               :key="index"
               once
-              transition="scale"
-              class="col-12 col-md-4 col-lg-3 tw-p-2"
+              transition="jump-up"
+              class="example-item col-12 col-md-4 col-lg-3 tw-p-2"
             >
               <ProductCard :productData="item" />
             </q-intersection>
-          </q-no-ssr>
+          <!-- </q-no-ssr> -->
         </div>
       </div>
     </template>
@@ -107,7 +107,7 @@ const fetchData = async () => {
   state.loading = true;
   try {
     const { status, data, code } = await useRequest(true).get(
-      "products?limit=10&page=2"
+      "products?limit=20&page=1"
     );
     if (data && data.data.length) {
       state.data.items = data.data;
@@ -124,3 +124,8 @@ onBeforeMount(() => {
   fetchData();
 });
 </script>
+<style lang="sass" scoped>
+.example-item
+  height: 100%
+  width: 290px
+</style>
