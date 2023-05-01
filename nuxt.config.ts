@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   typescript: { shim: false },
   build: { transpile: ["vuetify"] },
   modules: [
+    'nuxt-quasar-ui',
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     async (options, nuxt) => {
@@ -38,6 +39,20 @@ export default defineNuxtConfig({
       );
     },
   ],
+  quasar: {
+    plugins: [
+      'BottomSheet',
+      'Dialog',
+      'Loading',
+      'LoadingBar',
+      'Notify',
+      'Dark',
+    ],
+    extras: {
+      font: 'roboto-font',
+      fontIcons: ['material-icons'],
+    },
+  },
   runtimeConfig: {
     // Private keys are only available on the server
     apiSecret: '123',
