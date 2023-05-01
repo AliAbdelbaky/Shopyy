@@ -1,4 +1,3 @@
-// import { useTheme } from "vuetify";
 export default function () {
   // const theme = useTheme();
 
@@ -30,5 +29,4 @@ export default function () {
   };
 
   return { toggleTheme, setTheme };
-  // return { theme, toggleTheme, setTheme };
 }
