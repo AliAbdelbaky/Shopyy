@@ -2,33 +2,94 @@
   <BaseContainer>
     <h2 class="tw-text-8xl tw-uppercase tw-text-center tw-mb-7">Products</h2>
     <template v-if="state.loading">
-      <v-row>
-        <v-col cols="12" md="3" v-for="(_, index) in 16" :key="index">
-          <h2>loading</h2>
-        </v-col>
-      </v-row>
+      <div class="q-pa-md example-row-equal-width">
+        <div class="row">
+          <div
+            class="col-12 col-md-4 col-lg-3 tw-p-2"
+            v-for="(_, index) in 16"
+            :key="index"
+          >
+            <q-card style="max-width: 300px">
+              <q-item>
+                <q-item-section avatar>
+                  <q-skeleton type="QAvatar" />
+                </q-item-section>
+
+                <q-item-section>
+                  <q-item-label>
+                    <q-skeleton type="text" />
+                  </q-item-label>
+                  <q-item-label caption>
+                    <q-skeleton type="text" />
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-skeleton height="200px" square />
+
+              <q-card-actions align="right" class="q-gutter-md">
+                <q-skeleton type="QBtn" />
+                <q-skeleton type="QBtn" />
+              </q-card-actions>
+            </q-card>
+          </div>
+        </div>
+      </div>
     </template>
     <template v-else-if="!state.loading && state.data.items.length > 0">
-      <v-row>
-        <v-col
-          cols="12"
-          md="3"
-          v-for="(item, index) in state.data.items"
-          :key="index"
-        >
-          <ProductCard :productData="item" />
-        </v-col>
-      </v-row>
+      <div class="q-pa-md example-row-equal-width">
+        <div class="row">
+          <q-no-ssr>
+            <q-intersection
+              v-for="(item, index) in state.data.items"
+              :key="index"
+              once
+              transition="scale"
+              class="col-12 col-md-4 col-lg-3 tw-p-2"
+            >
+              <ProductCard :productData="item" />
+            </q-intersection>
+          </q-no-ssr>
+        </div>
+      </div>
     </template>
     <template v-else>
       <h2>Error</h2>
     </template>
     <template v-if="state.loadingNext">
-      <v-row>
-        <v-col cols="12" md="3" v-for="(_, index) in 8" :key="index">
-          <h2>Loading Next!</h2>
-        </v-col>
-      </v-row>
+      <div class="q-pa-md example-row-equal-width">
+        <div class="row">
+          <div
+            class="col-12 col-md-4 col-lg-3 tw-p-2"
+            v-for="(_, index) in 8"
+            :key="index"
+          >
+            <q-card style="max-width: 300px">
+              <q-item>
+                <q-item-section avatar>
+                  <q-skeleton type="QAvatar" />
+                </q-item-section>
+
+                <q-item-section>
+                  <q-item-label>
+                    <q-skeleton type="text" />
+                  </q-item-label>
+                  <q-item-label caption>
+                    <q-skeleton type="text" />
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-skeleton height="200px" square />
+
+              <q-card-actions align="right" class="q-gutter-md">
+                <q-skeleton type="QBtn" />
+                <q-skeleton type="QBtn" />
+              </q-card-actions>
+            </q-card>
+          </div>
+        </div>
+      </div>
     </template>
   </BaseContainer>
 </template>
@@ -46,7 +107,7 @@ const fetchData = async () => {
   state.loading = true;
   try {
     const { status, data, code } = await useRequest(true).get(
-      "products?limit=10"
+      "products?limit=10&page=2"
     );
     if (data && data.data.length) {
       state.data.items = data.data;
