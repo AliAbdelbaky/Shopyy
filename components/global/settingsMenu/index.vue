@@ -14,5 +14,5 @@
 import useLangHandler from "~/composables/layout/useLangHandler";
 import useThemeHandler from "~/composables/layout/useThemeHandler";
 const { t, setlang, locale } = useLangHandler();
-const { theme, toggleTheme, setTheme } = useThemeHandler();
+const { toggleTheme, setTheme } = useThemeHandler();
 </script>
