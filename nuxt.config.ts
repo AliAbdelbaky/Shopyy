@@ -1,4 +1,3 @@
-import vuetify from "vite-plugin-vuetify";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
@@ -25,40 +24,30 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["vuetify/styles", "@/assets/css/main.css"],
+  css: ["@/assets/css/main.css"],
   typescript: { shim: false },
   build: { transpile: ["vuetify"] },
-  modules: [
-    'nuxt-quasar-ui',
-    "@pinia/nuxt",
-    "@nuxtjs/tailwindcss",
-    async (options, nuxt) => {
-      nuxt.hooks.hook("vite:extendConfig", (config) =>
-        // @ts-ignore
-        config.plugins.push(vuetify())
-      );
-    },
-  ],
+  modules: ["nuxt-quasar-ui", "@pinia/nuxt", "@nuxtjs/tailwindcss"],
   quasar: {
     plugins: [
-      'BottomSheet',
-      'Dialog',
-      'Loading',
-      'LoadingBar',
-      'Notify',
-      'Dark',
+      "BottomSheet",
+      "Dialog",
+      "Loading",
+      "LoadingBar",
+      "Notify",
+      "Dark",
     ],
     extras: {
-      font: 'roboto-font',
-      fontIcons: ['material-icons'],
+      font: "roboto-font",
+      fontIcons: ["material-icons"],
     },
   },
   runtimeConfig: {
     // Private keys are only available on the server
-    apiSecret: '123',
+    apiSecret: "123",
     // Public keys that are exposed to the client
     public: {
-      apiBase: process.env.BASE_URL || '/api'
-    }
-  }
+      apiBase: process.env.BASE_URL || "/api",
+    },
+  },
 });
