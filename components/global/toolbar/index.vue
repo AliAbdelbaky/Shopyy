@@ -42,6 +42,7 @@ import UserMenu from "~/components/global/userMenu";
 import CartMenu from "~/components/global/cartMenu";
 // @ts-ignore
 import SettingsMenu from "~/components/global/settingsMenu";
+// @ts-ignore
 import NavLinks from "./NavLinks.vue";
 import BaseContainer from "../BaseContainer.vue";
 const leftDrawerOpen = ref(false);
