@@ -1,9 +1,9 @@
 <template>
   <q-header flat class="tw-bg-white tw-text-black">
-    <BaseContainer class="tw-flex-1">
+    <BaseContainer class="tw-flex-1 !tw-py-0">
       <q-toolbar>
         <q-toolbar-title>Logo </q-toolbar-title>
-
+        <NavLinks class=" tw-me-2" />
         <SettingsMenu />
         <cartMenu />
         <userMenu class="tw-mx-3" />
@@ -42,6 +42,7 @@ import UserMenu from "~/components/global/userMenu";
 import CartMenu from "~/components/global/cartMenu";
 // @ts-ignore
 import SettingsMenu from "~/components/global/settingsMenu";
+import NavLinks from "./NavLinks.vue";
 import BaseContainer from "../BaseContainer.vue";
 const leftDrawerOpen = ref(false);
 import useToolbar from "~/composables/website/shared/useToolbar";
