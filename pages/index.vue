@@ -1,7 +1,5 @@
 <template>
-  <BaseContainer>
-    <MainComp />
-  </BaseContainer>
+  <MainComp />
   <!-- <q-page class="q-pl-lg">
     <p class="text-h6 q-pt-md">Plugin Showcase</p>
     <q-list>
@@ -26,15 +24,15 @@
 // @ts-ignore
 import MainComp from "~/components/website/landing";
 import BaseContainer from "~/components/global/BaseContainer.vue";
-import { QBtnProps, QNotifyOptions, useQuasar } from 'quasar';
+import { QBtnProps, QNotifyOptions, useQuasar } from "quasar";
 
 const { dialog, bottomSheet, loading, loadingBar, notify, dark, screen } =
   useQuasar();
 
 loadingBar.setDefaults({
-  color: 'green',
-  size: '4px',
-  position: 'top',
+  color: "green",
+  size: "4px",
+  position: "top",
 });
 
 // const themeIcon = computed(() => (dark.isActive ? 'dark_mode' : 'light_mode'));
