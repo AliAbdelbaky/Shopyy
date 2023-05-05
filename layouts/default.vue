@@ -9,4 +9,12 @@
 <script lang="ts" setup>
 // @ts-ignore
 import ToolBar from "~~/components/global/toolbar";
+import { useQuasar } from "quasar";
+const { loadingBar } = useQuasar();
+
+loadingBar.setDefaults({
+  color: "blue",
+  size: "4px",
+  position: "top",
+});
 </script>
