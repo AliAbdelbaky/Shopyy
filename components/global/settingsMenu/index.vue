@@ -1,12 +1,18 @@
 <template>
   <div>
-    <div class="tw-flex tw-items-center tw-gap-3 tw-justify-between">
+    <div class="tw-flex tw-items-center tw-gap-1 tw-justify-between">
+      <q-btn
+        @click="toggleTheme"
+        flat
+        dense
+        aria-label="Theme"
+        icon="mdi-magnify"
+      />
       <q-btn
         @click="setlang(locale === 'ar' ? 'en' : 'ar')"
         flat
         dense
         aria-label="language"
-        round
       >
         {{ locale === "ar" ? "en" : "ar" }}</q-btn
       >
@@ -15,7 +21,6 @@
         flat
         dense
         aria-label="Theme"
-        round
         icon="mdi-theme-light-dark"
       />
     </div>

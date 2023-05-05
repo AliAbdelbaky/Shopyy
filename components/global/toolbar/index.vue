@@ -1,26 +1,17 @@
 <template>
-  <q-header flat>
+  <q-header flat class="tw-bg-white tw-text-black">
     <BaseContainer class="tw-flex-1">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
         <q-toolbar-title>Logo </q-toolbar-title>
 
-        <userMenu />
-        <cartMenu />
         <SettingsMenu />
+        <cartMenu />
+        <userMenu class="tw-mx-3" />
       </q-toolbar>
     </BaseContainer>
   </q-header>
 
-  <q-drawer v-model="leftDrawerOpen" bordered>
+  <q-drawer v-model="drawer" bordered>
     <q-list>
       <q-item-label header> Essential Links </q-item-label>
       <q-item
@@ -53,8 +44,6 @@ import CartMenu from "~/components/global/cartMenu";
 import SettingsMenu from "~/components/global/settingsMenu";
 import BaseContainer from "../BaseContainer.vue";
 const leftDrawerOpen = ref(false);
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-}
+import useToolbar from "~/composables/website/shared/useToolbar";
+const { drawer } = useToolbar();
 </script>
