@@ -11,7 +11,7 @@
         Sign-in
       </h2>
       <p class="tw-text-2xl md:tw-text-xl">
-        {{ isLogin ? `Don't have an account?` : "already have an account?" }}
+        {{ isLogin ? `Don't have an account?` : "Already have an account?" }}
         <span
           class="tw-text-purple-400 hover:tw-underline tw-cursor-pointer tw-ms-1 tw-opacity-80 hover:tw-opacity-100"
           @click="() => (isLogin = !isLogin)"
