@@ -1,12 +1,21 @@
 <template>
-  <q-header flat class="tw-bg-white tw-text-black">
-    <BaseContainer class="tw-flex-1 !tw-py-0">
+  <q-header
+    flat
+    class="tw-text-black"
+    :class="isAuthroute ? ' !tw-bg-transparent' : 'tw-bg-white '"
+  >
+    <BaseContainer
+      class="tw-flex-1 !tw-py-0"
+      :class="isAuthroute ? 'md:!tw-px-[20%]' : ''"
+    >
       <q-toolbar>
         <q-toolbar-title>Logo </q-toolbar-title>
-        <NavLinks class=" tw-me-2" />
-        <SettingsMenu />
-        <cartMenu />
-        <userMenu class="tw-mx-3" />
+        <template v-if="!isAuthroute">
+          <NavLinks class="tw-me-2" />
+          <SettingsMenu />
+          <cartMenu />
+          <userMenu class="tw-mx-3" />
+        </template>
       </q-toolbar>
     </BaseContainer>
   </q-header>
@@ -48,4 +57,9 @@ import BaseContainer from "../BaseContainer.vue";
 const leftDrawerOpen = ref(false);
 import useToolbar from "~/composables/website/shared/useToolbar";
 const { drawer } = useToolbar();
+
+const route = useRoute();
+const isAuthroute = computed(() => {
+  return route.name === "auth";
+});
 </script>

@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const links = ["link1", "link2", "link3", "link4", "link5", "link6"];
+const links = ["auth", "link2", "link3", "link4", "link5", "link6"];
 </script>
 
 <style scoped lang="scss">
