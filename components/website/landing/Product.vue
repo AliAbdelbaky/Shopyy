@@ -62,7 +62,7 @@
             v-for="(_, index) in 8"
             :key="index"
           >
-            <q-card style="max-width: 300px">
+            <q-card class="!tw-w-full" style="max-width: 100%">
               <q-item>
                 <q-item-section avatar>
                   <q-skeleton type="QAvatar" />
@@ -97,21 +97,18 @@
 import { onBeforeMount } from "vue";
 // @ts-ignore
 import ProductCard from "~/components/website/shared/ProductCard.vue";
-import useRequest from "~/composables/helpers/useApi";
+import api from "~/composables/helpers/useApi";
 import useProductHandler from "~/composables/website/landing/useProductHandler";
 
 const fetchData = async () => {
   state.loading = true;
   try {
-    const { status, data, code } = await useRequest(true).get(
-      "products?limit=20&page=1"
-    );
+    const { data, status } = await api().get("products?limit=20&page=1");
     if (data && data.data.length) {
       state.data.items = data.data;
     }
     state.loading = false;
   } catch (err) {
-    console.log(err);
     state.loading = false;
   }
 };
@@ -121,4 +118,3 @@ onBeforeMount(() => {
   fetchData();
 });
 </script>
-

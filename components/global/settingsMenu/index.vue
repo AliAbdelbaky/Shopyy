@@ -31,4 +31,11 @@ import useLangHandler from "~/composables/layout/useLangHandler";
 import useThemeHandler from "~/composables/layout/useThemeHandler";
 const { t, setlang, locale } = useLangHandler();
 const { toggleTheme, setTheme } = useThemeHandler();
+
+if (process.client) {
+  const locale = (localStorage.getItem("lang") as "ar" | "en") || "en";
+  const theme = (localStorage.getItem("theme") as "dark" | "light") || "light";
+  setlang(locale);
+  setTheme(theme);
+}
 </script>

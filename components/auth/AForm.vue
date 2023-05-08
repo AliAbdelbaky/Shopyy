@@ -26,7 +26,7 @@
             <q-input
               dense
               standout="bg-teal text-white"
-              v-model="authState.name"
+              v-model="state.name"
               placeholder="Type here"
               bottom-slots
               hide-bottom-space
@@ -39,7 +39,7 @@
             <q-input
               dense
               standout="bg-teal text-white"
-              v-model="authState.username"
+              v-model="state.username"
               placeholder="Type here"
               bottom-slots
               hide-bottom-space
@@ -56,7 +56,7 @@
         <q-input
           dense
           standout="bg-teal text-white"
-          v-model="authState.email"
+          v-model="state.email"
           placeholder="Type here"
           bottom-slots
           hide-bottom-space
@@ -69,7 +69,7 @@
         <q-input
           dense
           standout="bg-teal text-white"
-          v-model="authState.password"
+          v-model="state.password"
           placeholder="Type here"
           bottom-slots
           hide-bottom-space
@@ -91,6 +91,7 @@
         label="Continue"
         size="md"
         class="tw-opacity-50 tw-transition-all hover:tw-opacity-100 !tw-py-3"
+        @click="onSubmit"
       />
       <q-btn
         v-if="isLogin"
@@ -134,45 +135,9 @@
 <script setup lang="ts">
 // @ts-ignore
 import Logo from "~~/assets/imgs/shoppyLogo.png";
-
-import { useForm, useField } from "vee-validate";
-const { handleSubmit } = useForm();
-
-const onSubmit = handleSubmit((values) => {
-  // Submit to API
-  console.log(values); // { email: 'email@gmail.com' }
-});
-
-const name = ref("");
-// Validator function
-const isRequired = (value: any) => (value ? true : "This field is required");
-
-const { value, errorMessage } = useField("name", isRequired);
-
-const isLogin = ref(true);
-const isPwd = ref(true);
-
-const authState = reactive({
-  name: null as string | null,
-  username: null as string | null,
-  email: null as string | null,
-  password: null as string | null,
-});
-
-const isValid = computed(() => !authState.email || authState.email.length <= 3);
-
-const socailMethods = ref([
-  {
-    name: "google",
-    icon: "google",
-    color: "red",
-  },
-  {
-    name: "facebook",
-    icon: "facebook",
-    color: "blue",
-  },
-]);
+import useAuthHandler from "~/composables/website/auth/useAuthHandler";
+const { socailMethods, state, onSubmit, isValid, isPwd, isLogin } =
+  useAuthHandler();
 </script>
 
 <style lang="scss" scoped>

@@ -27,7 +27,11 @@ export default defineNuxtConfig({
   css: ["@/assets/css/main.css"],
   typescript: { shim: false },
   build: { transpile: ["vuetify"] },
-  modules: ["nuxt-quasar-ui", "@pinia/nuxt", "@nuxtjs/tailwindcss"],
+  modules: [
+    "nuxt-quasar-ui",
+    "@pinia/nuxt",
+    "@nuxtjs/tailwindcss",
+  ],
   quasar: {
     plugins: [
       "BottomSheet",
