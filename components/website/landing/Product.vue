@@ -89,6 +89,7 @@
         </div>
       </div>
     </template>
+    {{ data }}
   </div>
 </template>
 
@@ -97,24 +98,31 @@
 import { onBeforeMount } from "vue";
 // @ts-ignore
 import ProductCard from "~/components/website/shared/ProductCard.vue";
-import api from "~/composables/helpers/useApi";
+import api from "~/composables/helpers/useApiHandler";
 import useProductHandler from "~/composables/website/landing/useProductHandler";
+const { fetch } = api();
 
-const fetchData = async () => {
-  state.loading = true;
-  try {
-    const { data, status } = await api().get("products?limit=20&page=1");
-    if (data && data.data.length) {
-      state.data.items = data.data;
-    }
-    state.loading = false;
-  } catch (err) {
-    state.loading = false;
-  }
-};
 const { state } = useProductHandler();
+// const fetchData = async () => {
+//   state.loading = true;
+//   try {
+//     const { data, status } = await api().get("products?limit=20&page=1");
+//     if (data && data.data.length) {
+//       state.data.items = data.data;
+//     }
+//     state.loading = false;
+//   } catch (err) {
+//     state.loading = false;
+//   }
+// };
 
-onBeforeMount(() => {
-  fetchData();
-});
+const { data } = await useAsyncData("count", async () =>
+  fetch("products?limit=20&page=1")
+);
+// if (process.client) {
+//   fetchData();
+// }
+// onBeforeMount(() => {
+//   fetchData();
+// });
 </script>

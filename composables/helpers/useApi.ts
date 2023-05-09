@@ -20,7 +20,7 @@ const $api = () => {
     );
     // Do something before request is sent
     config.headers["Accept-Language"] = locale.value;
-    console.log(config, "config from middleware");
+    // console.log(config, "config from middleware");
     return config;
   });
   $axios.interceptors.response.use(

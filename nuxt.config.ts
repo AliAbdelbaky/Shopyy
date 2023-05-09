@@ -31,7 +31,15 @@ export default defineNuxtConfig({
     "nuxt-quasar-ui",
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
+    '@nuxt/devtools',
   ],
+  devtools: {
+    // Enable devtools (default: true)
+    enabled: true,
+    // VS Code Server options
+    vscode: {},
+    // ...other options
+  },
   quasar: {
     plugins: [
       "BottomSheet",
