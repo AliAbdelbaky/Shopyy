@@ -3,9 +3,6 @@ export interface ApiResponse<T> {
   error: any;
 }
 
-export interface Api {
-  fetch(endPoint: string): Promise<ApiResponse<any[]>>;
-}
 type Headers = [string, string][] | Record<string, string>;
 
 export default async function (endPoint: string): Promise<ApiResponse<any[]>> {
