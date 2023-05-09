@@ -2,7 +2,7 @@
   <div>
     <div class="tw-flex tw-items-center tw-gap-1 tw-justify-between">
       <q-btn
-        @click="toggleTheme"
+        @click="setTheme(dark.isActive ? 'light' : 'dark')"
         flat
         dense
         aria-label="Theme"
@@ -14,10 +14,10 @@
         dense
         aria-label="language"
       >
-        {{ locale === "ar" ? "en" : "ar" }}</q-btn
+        {{ langCookie == "ar" ? "en" : "ar" }}</q-btn
       >
       <q-btn
-        @click="toggleTheme"
+        @click="setTheme(dark.isActive ? 'light' : 'dark')"
         flat
         dense
         aria-label="Theme"
@@ -29,13 +29,11 @@
 <script setup lang="ts">
 import useLangHandler from "~/composables/layout/useLangHandler";
 import useThemeHandler from "~/composables/layout/useThemeHandler";
-const { t, setlang, locale } = useLangHandler();
-const { toggleTheme, setTheme } = useThemeHandler();
+const { t, setlang, locale, langCookie } = useLangHandler();
+const { setTheme, dark, theme_cookie } = useThemeHandler();
 
-if (process.client) {
-  const locale = (localStorage.getItem("lang") as "ar" | "en") || "en";
-  const theme = (localStorage.getItem("theme") as "dark" | "light") || "light";
-  setlang(locale);
-  setTheme(theme);
-}
+const locales = (langCookie.value as "ar" | "en") || "en";
+const theme = (theme_cookie.value as "dark" | "light") || "light";
+setlang(locales);
+setTheme(theme);
 </script>

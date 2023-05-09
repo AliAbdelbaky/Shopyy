@@ -2,32 +2,18 @@ import { useQuasar } from "quasar";
 
 export default function () {
   const { dark } = useQuasar();
-
-  const toggleTheme = () => {
-    // 1 toggle theme for Quasar
-
-    dark.set(!dark.isActive);
-    console.log(dark);
-    // 2 toggle theme for tailliwnd
-    // console.log(document.body.classList);
-    // document.body.classList.
-    document
-      .querySelector("body")
-      ?.classList.remove(dark.isActive ? "light" : "dark");
-    document
-      .querySelector("body")
-      ?.classList.add(dark.isActive ? "dark" : "light");
-    // // 3 save theme data
-    // localStorage.setItem("theme", themeIsDark ? "dark" : "light");
-  };
+  const theme_cookie = useCookie("theme");
 
   const setTheme = (globalTheme: "dark" | "light") => {
     dark.set(globalTheme === "dark");
-    document
-      .querySelector("body")
-      ?.classList.remove(globalTheme == "dark" ? "light" : "dark");
-    document.querySelector("body")?.classList.add(globalTheme);
+    theme_cookie.value = globalTheme;
+    if (process.client) {
+      document
+        .querySelector("body")
+        ?.classList.remove(globalTheme == "dark" ? "light" : "dark");
+      document.querySelector("body")?.classList.add(globalTheme);
+    }
   };
 
-  return { toggleTheme, setTheme, dark };
+  return { setTheme, dark, theme_cookie };
 }

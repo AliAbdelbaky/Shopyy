@@ -6,23 +6,12 @@ export interface ApiResponse<T> {
 export interface Api {
   fetch(endPoint: string): Promise<ApiResponse<any[]>>;
 }
-interface Headers {
-  Authorization?: null | string;
-  Accept: string;
-  "Content-Type": string;
-  "X-RESPONSE-CODE": string;
-  "Access-Control-Allow-Origin": string;
-  "Access-Control-Allow-Methods": string;
-  "Access-Control-Allow-Headers": string;
-  "X-Requested-With": string;
-  "Accept-Language"?: string;
-}
+type Headers = [string, string][] | Record<string, string>;
 
-export default function (): Api {
+export default async function (endPoint: string): Promise<ApiResponse<any[]>> {
   const baseURL = computed(() => useRuntimeConfig().public.apiBase);
-  const locale = computed(() => useNuxtApp().$i18n.global.locale.value);
-
-  // console.log(useNuxtApp().$i18n.global.locale.value);
+  const langCookie = useCookie("lang").value as "ar" | "en";
+  console.log({ langCookie });
 
   const token = true;
 
@@ -35,25 +24,23 @@ export default function (): Api {
     "Access-Control-Allow-Methods": "*",
     "Access-Control-Allow-Headers": "*",
     "X-Requested-With": "XMLHttpRequest",
+    "Accept-Language": langCookie || "en",
   };
 
-  // console.log(useNuxtApp().$i18n.global.locale.value);
+  token ? (headers.Authorization = `${token}`) : (headers.Authorization = "");
+  try {
+    const URL = `${baseURL.value}/${endPoint}`;
 
-  headers["Accept-Language"] = locale.value;
-
-  token ? (headers.Authorization = `${token}`) : (headers.Authorization = null);
-
-  const fetch = async (endPoint: string): Promise<ApiResponse<any[]>> => {
-    try {
-      const response = await $fetch(`${baseURL.value}/${endPoint}`, {
-        headers,
-      });
-      return { data: response, error: null };
-    } catch (e) {
-      console.error(e);
-      return { data: null, error: e };
-    }
-  };
-
-  return { fetch };
+    console.log(
+      `%c Making request to: ${endPoint}`,
+      "color: aliceblue; font-size: 12px;padding:10px;background-color:#000;border-radius:5px"
+    );
+    const response = await $fetch(URL, {
+      headers,
+    });
+    return { data: response as any, error: null };
+  } catch (e) {
+    console.trace(e);
+    return { data: null, error: e };
+  }
 }

@@ -1,4 +1,5 @@
 import { ISingleProduct } from "~/assets/types/product.type";
+import api from "~/composables/helpers/useApiHandler";
 interface State {
   loading: boolean;
   loadingNext: boolean;
@@ -22,5 +23,3 @@ export default function () {
     state,
   };
 }
-
-

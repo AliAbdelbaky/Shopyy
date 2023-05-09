@@ -1,7 +1,8 @@
 <template>
   <div>
     <h2 class="tw-text-8xl tw-uppercase tw-text-center tw-mb-7">Products</h2>
-    <template v-if="state.loading">
+    <!-- <client-only> -->
+    <template v-if="pending">
       <div class="q-pa-md example-row-equal-width">
         <div class="row">
           <div
@@ -36,7 +37,7 @@
         </div>
       </div>
     </template>
-    <template v-else-if="!state.loading && state.data.items.length > 0">
+    <template v-else-if="!pending && state.data.items.length > 0">
       <div class="q-pa-md example-row-equal-width">
         <div class="row tw-px-0">
           <q-intersection
@@ -51,7 +52,7 @@
         </div>
       </div>
     </template>
-    <template v-else>
+    <template v-if="error">
       <h2>Error</h2>
     </template>
     <template v-if="state.loadingNext">
@@ -89,40 +90,31 @@
         </div>
       </div>
     </template>
-    {{ data }}
+    <!-- </client-only> -->
   </div>
 </template>
 
 <script setup lang="ts">
 // @ts-ignore
-import { onBeforeMount } from "vue";
-// @ts-ignore
 import ProductCard from "~/components/website/shared/ProductCard.vue";
-import api from "~/composables/helpers/useApiHandler";
 import useProductHandler from "~/composables/website/landing/useProductHandler";
-const { fetch } = api();
+import api from "~/composables/helpers/useApiHandler";
 
 const { state } = useProductHandler();
-// const fetchData = async () => {
-//   state.loading = true;
-//   try {
-//     const { data, status } = await api().get("products?limit=20&page=1");
-//     if (data && data.data.length) {
-//       state.data.items = data.data;
-//     }
-//     state.loading = false;
-//   } catch (err) {
-//     state.loading = false;
-//   }
-// };
 
-const { data } = await useAsyncData("count", async () =>
-  fetch("products?limit=20&page=1")
+const { data, pending, error } = await useAsyncData(
+  "products",
+  async () => api("products?limit=20&page=1"),
+  {
+    transform: (data) => {
+      state.loading = true;
+      return data.data;
+    },
+  }
 );
-// if (process.client) {
-//   fetchData();
-// }
-// onBeforeMount(() => {
-//   fetchData();
-// });
+watch(data, (products: any) => {
+  // @ts-ignore
+  state.data.items = products.data;
+  state.loading = false;
+});
 </script>
