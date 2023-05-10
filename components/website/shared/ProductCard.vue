@@ -1,12 +1,12 @@
 <template>
-  <q-card class="my-card" flat bordered>
+  <q-card class="tw-h-full" flat>
     <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
 
     <q-card-section>
       <q-btn
         fab
         color="primary"
-        icon="place"
+        icon="mdi-map-marker"
         class="absolute"
         style="top: 0; right: 12px; transform: translateY(-50%)"
       />
@@ -18,7 +18,7 @@
         <div
           class="col-auto text-grey text-caption q-pt-md row no-wrap items-center"
         >
-          <q-icon name="place" />
+          <q-icon name="mdi-map-marker" />
           {{ productData.sold }}
         </div>
       </div>
@@ -36,7 +36,7 @@
     <q-separator />
 
     <q-card-actions>
-      <q-btn flat round icon="event" />
+      <q-btn flat round icon="mdi-calendar" />
       <q-btn flat color="primary"> Reserve </q-btn>
     </q-card-actions>
   </q-card>

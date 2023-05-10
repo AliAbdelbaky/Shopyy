@@ -9,7 +9,9 @@
       :class="isAuthroute ? 'md:!tw-px-[20%]' : ''"
     >
       <q-toolbar>
-        <q-toolbar-title>Logo </q-toolbar-title>
+        <q-toolbar-title>
+          <nuxt-link to="/"> Logo </nuxt-link>
+        </q-toolbar-title>
         <template v-if="!isAuthroute">
           <NavLinks class="tw-me-2" />
           <SettingsMenu />

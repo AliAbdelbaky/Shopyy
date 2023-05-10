@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr:true,
   app: {
     head: {
       titleTemplate: "%s - Shoppy",
@@ -32,7 +31,7 @@ export default defineNuxtConfig({
     "nuxt-quasar-ui",
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
-    '@nuxt/devtools',
+    "@nuxt/devtools",
   ],
   devtools: {
     // Enable devtools (default: true)
@@ -52,8 +51,9 @@ export default defineNuxtConfig({
     ],
     extras: {
       font: "roboto-font",
-      fontIcons: ["material-icons", "mdi-v7"],
+      fontIcons: ["mdi-v7"],
     },
+    iconSet: "mdi-v7",
   },
   runtimeConfig: {
     // Private keys are only available on the server

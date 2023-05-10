@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <ToolBar />
-    <q-page-container>
+    <q-page-container class="!tw-min-h-screen">
       <NuxtPage />
     </q-page-container>
   </q-layout>
