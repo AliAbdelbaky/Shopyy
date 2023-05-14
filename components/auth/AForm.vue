@@ -31,7 +31,6 @@
               bottom-slots
               hide-bottom-space
               error-message="Please use maximum 3 characters"
-              :error="!isValid"
             />
           </label>
           <label class="tw-text-start">
@@ -44,7 +43,6 @@
               bottom-slots
               hide-bottom-space
               error-message="Please use maximum 3 characters"
-              :error="!isValid"
             />
           </label>
         </div>
@@ -60,8 +58,9 @@
           placeholder="Type here"
           bottom-slots
           hide-bottom-space
-          error-message="Please use maximum 3 characters"
-          :error="!isValid"
+          :error-message="state.errors?.email"
+          :error="!!state.errors?.email"
+          @update:model-value="validate"
         />
       </label>
       <label class="tw-text-start">
@@ -73,9 +72,7 @@
           placeholder="Type here"
           bottom-slots
           hide-bottom-space
-          error-message="Please use maximum 3 characters"
           :type="isPwd ? 'password' : 'text'"
-          :error="!isValid"
         >
           <template v-slot:append>
             <q-icon
@@ -128,6 +125,7 @@
           </q-btn>
         </div>
       </div>
+      {{ state }}
     </div>
   </div>
 </template>
@@ -136,7 +134,7 @@
 // @ts-ignore
 import Logo from "~~/assets/imgs/shoppyLogo.png";
 import useAuthHandler from "~/composables/website/auth/useAuthHandler";
-const { socailMethods, state, onSubmit, isValid, isPwd, isLogin } =
+const { socailMethods, state, onSubmit, validate, isPwd, isLogin } =
   useAuthHandler();
 </script>
 
