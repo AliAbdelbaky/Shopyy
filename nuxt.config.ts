@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     "@nuxt/devtools",
+    "@sidebase/nuxt-auth",
   ],
   devtools: {
     // Enable devtools (default: true)
@@ -62,5 +63,8 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.BASE_URL || "/api",
     },
+  },
+  devServer: {
+    port: 3000,
   },
 });

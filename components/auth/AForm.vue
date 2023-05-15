@@ -126,6 +126,14 @@
         </div>
       </div>
       {{ state }}
+      sss
+      <q-btn
+        @click="login"
+        color="transparent"
+        label="logginggg"
+        size="md"
+        class="tw-opacity-50 tw-transition-all hover:tw-opacity-100 hover:tw-bg-slate-300 !tw-py-3 !tw-text-black"
+      />
     </div>
   </div>
 </template>
@@ -136,6 +144,11 @@ import Logo from "~~/assets/imgs/shoppyLogo.png";
 import useAuthHandler from "~/composables/website/auth/useAuthHandler";
 const { socailMethods, state, onSubmit, validate, isPwd, isLogin } =
   useAuthHandler();
+const { status, data, signIn, signOut } = useAuth();
+const login = async () => {
+  console.log(status.value, data.value);
+  await signIn();
+};
 </script>
 
 <style lang="scss" scoped>

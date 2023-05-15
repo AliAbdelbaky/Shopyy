@@ -20,6 +20,11 @@ export default function () {
       icon: "facebook",
       color: "blue",
     },
+    {
+      name: "github",
+      icon: "github",
+      color: "black",
+    },
   ]);
   const isLogin = ref(true);
   const isPwd = ref(true);
