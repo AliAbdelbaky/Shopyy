@@ -21,6 +21,13 @@
   </q-page> -->
 </template>
 <script setup lang="ts">
+definePageMeta({
+  auth: {
+    unauthenticatedOnly: true,
+    navigateAuthenticatedTo: "/",
+  },
+});
+
 // @ts-ignore
 import MainComp from "~/components/website/landing";
 import BaseContainer from "~/components/global/BaseContainer.vue";

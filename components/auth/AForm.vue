@@ -128,9 +128,18 @@
       {{ state }}
       sss
       <q-btn
-        @click="login"
+        v-if="!loggedin"
+        @click="signin"
         color="transparent"
-        label="logginggg"
+        label="sign in"
+        size="md"
+        class="tw-opacity-50 tw-transition-all hover:tw-opacity-100 hover:tw-bg-slate-300 !tw-py-3 !tw-text-black"
+      />
+      <q-btn
+        v-else
+        @click="signout"
+        color="transparent"
+        label="sign out"
         size="md"
         class="tw-opacity-50 tw-transition-all hover:tw-opacity-100 hover:tw-bg-slate-300 !tw-py-3 !tw-text-black"
       />
@@ -145,10 +154,15 @@ import useAuthHandler from "~/composables/website/auth/useAuthHandler";
 const { socailMethods, state, onSubmit, validate, isPwd, isLogin } =
   useAuthHandler();
 const { status, data, signIn, signOut } = useAuth();
-const login = async () => {
+const signin = async () => {
   console.log(status.value, data.value);
   await signIn();
 };
+const signout = async () => {
+  console.log(status.value, data.value);
+  await signOut();
+};
+const loggedin = computed(() => status.value === "authenticated");
 </script>
 
 <style lang="scss" scoped>
