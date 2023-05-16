@@ -114,35 +114,19 @@
             color="transparent"
             flat
             size="md"
+            @click="loginIn(item.method)"
           >
             <q-icon :name="`mdi-${item.icon}`" :color="item.color" size="sm" />
             <span
               class="tw-text-black tw-ms-2 !tw-capitalize"
-              v-show="socailMethods.length <= 2"
+              v-show="socailMethods.length <= 3"
             >
               {{ item.name }}
             </span>
           </q-btn>
         </div>
       </div>
-      {{ state }}
-      sss
-      <q-btn
-        v-if="!loggedin"
-        @click="signin"
-        color="transparent"
-        label="sign in"
-        size="md"
-        class="tw-opacity-50 tw-transition-all hover:tw-opacity-100 hover:tw-bg-slate-300 !tw-py-3 !tw-text-black"
-      />
-      <q-btn
-        v-else
-        @click="signout"
-        color="transparent"
-        label="sign out"
-        size="md"
-        class="tw-opacity-50 tw-transition-all hover:tw-opacity-100 hover:tw-bg-slate-300 !tw-py-3 !tw-text-black"
-      />
+      {{ loggedIn }}
     </div>
   </div>
 </template>
@@ -154,15 +138,10 @@ import useAuthHandler from "~/composables/website/auth/useAuthHandler";
 const { socailMethods, state, onSubmit, validate, isPwd, isLogin } =
   useAuthHandler();
 const { status, data, signIn, signOut } = useAuth();
-const signin = async () => {
-  console.log(status.value, data.value);
-  await signIn();
+const loggedIn = computed(() => status.value === "authenticated");
+const loginIn = async (method: string) => {
+  await signIn(method, { callbackUrl: "/" });
 };
-const signout = async () => {
-  console.log(status.value, data.value);
-  await signOut();
-};
-const loggedin = computed(() => status.value === "authenticated");
 </script>
 
 <style lang="scss" scoped>

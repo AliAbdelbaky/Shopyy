@@ -21,23 +21,16 @@
   </q-page> -->
 </template>
 <script setup lang="ts">
-definePageMeta({
-  auth: {
-    unauthenticatedOnly: true,
-    navigateAuthenticatedTo: "/",
-  },
-});
-
 // @ts-ignore
 import MainComp from "~/components/website/landing";
 import BaseContainer from "~/components/global/BaseContainer.vue";
 // import { QBtnProps, QNotifyOptions, useQuasar } from "quasar";
 
 // const { dialog, bottomSheet, loading, loadingBar, notify, dark, screen } =
-  // useQuasar();
+// useQuasar();
 
 // loadingBar.setDefaults({
-  // color: "#1e293b",
+// color: "#1e293b",
 //   size: "4px",
 //   position: "top",
 // });

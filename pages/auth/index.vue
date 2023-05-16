@@ -7,6 +7,7 @@
 import MainComp from "~~/components/auth/index.vue";
 definePageMeta({
   layout: "auth",
+  middleware: "authentication",
 });
 </script>
 

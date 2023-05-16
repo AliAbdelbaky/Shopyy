@@ -1,5 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    // Private keys are only available on the server
+    apiSecret: "123",
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+    // origin: process.env.ORIGIN,
+    AUTH_SECRET: process.env.AUTH_SECRET,
+    // Public keys that are exposed to the client
+    public: {
+      apiBase: process.env.BASE_URL || "/api",
+      // auth: {
+      //   computed: {
+      //     origin: "http://localhost:3000",
+      //     pathname: "http://localhost:3000",
+      //     fullBaseUrl: "http://localhost:3000",
+      //   },
+      // },
+    },
+  },
   app: {
     head: {
       titleTemplate: "%s - Shoppy",
@@ -26,7 +45,6 @@ export default defineNuxtConfig({
   },
   css: ["@/assets/css/main.css"],
   typescript: { shim: false },
-  build: { transpile: ["vuetify"] },
   modules: [
     "nuxt-quasar-ui",
     "@pinia/nuxt",
@@ -56,30 +74,10 @@ export default defineNuxtConfig({
     },
     iconSet: "mdi-v7",
   },
-  runtimeConfig: {
-    // Private keys are only available on the server
-    apiSecret: "123",
-    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
-    origin: process.env.ORIGIN,
-    AUTH_SECRET: process.env.AUTH_SECRET,
-    // Public keys that are exposed to the client
-    public: {
-      apiBase: process.env.BASE_URL || "/api",
-      auth: {
-        globalAppMiddleware: {
-          isEnabled: true,
-          // addDefaultCallbackUrl: "/",
-          addDefaultCallbackUrl: true,
-        },
-        computed: {
-          // origin: process.env.ORIGIN,
-          origin: process.env.ORIGIN,
-        },
-      },
-    },
-  },
   devServer: {
     port: 3000,
+  },
+  auth: {
+    globalAppMiddleware: true,
   },
 });

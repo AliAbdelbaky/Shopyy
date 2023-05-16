@@ -14,16 +14,20 @@ export default function () {
       name: "google",
       icon: "google",
       color: "red",
+      method: "google",
     },
     {
       name: "facebook",
       icon: "facebook",
       color: "blue",
+      method: "facebook",
     },
     {
       name: "github",
       icon: "github",
       color: "black",
+      method: "github",
+
     },
   ]);
   const isLogin = ref(true);
