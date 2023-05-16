@@ -67,4 +67,5 @@ export default defineNuxtConfig({
   devServer: {
     port: 3000,
   },
+  auth: { origin: 'https://your-cool-origin.com' }
 });
