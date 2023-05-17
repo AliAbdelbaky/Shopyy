@@ -1,18 +1,19 @@
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NuxtAuthHandler } from "#auth";
+
 export default NuxtAuthHandler({
   // A secret string you define, to ensure correct encryption
   pages: {
     // Change the default behavior to use `/login` as the path for the sign-in page
     signIn: "/auth",
   },
-  secret: process.env.AUTH_SECRET,
+  secret: useRuntimeConfig().AUTH_SECRET,
   providers: [
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     GithubProvider.default({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientId: useRuntimeConfig().GITHUB_CLIENT_ID,
+      clientSecret: useRuntimeConfig().GITHUB_CLIENT_SECRET,
     }),
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     CredentialsProvider.default({
@@ -32,11 +33,11 @@ export default NuxtAuthHandler({
         const user = {
           id: "1",
           name: "J Smith",
-          username: "jsmith",
-          password: "hunter2",
+          username: "test@gmai.cionm",
+          password: "test",
         };
         if (
-          credentials?.username === user.username &&
+          credentials?.email === user.username &&
           credentials?.password === user.password
         ) {
           // Any object returned will be saved in `user` property of the JWT

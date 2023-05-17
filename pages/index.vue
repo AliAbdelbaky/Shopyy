@@ -1,4 +1,7 @@
 <template>
+  <pre>
+    {{ data }}
+  </pre>
   <MainComp />
   <!-- <q-page class="q-pl-lg">
     <p class="text-h6 q-pt-md">Plugin Showcase</p>
@@ -24,6 +27,7 @@
 // @ts-ignore
 import MainComp from "~/components/website/landing";
 import BaseContainer from "~/components/global/BaseContainer.vue";
+const { data } = await useFetch("/api/auth/me");
 // import { QBtnProps, QNotifyOptions, useQuasar } from "quasar";
 
 // const { dialog, bottomSheet, loading, loadingBar, notify, dark, screen } =
