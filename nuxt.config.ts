@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     AUTH_SECRET: process.env.AUTH_SECRET,
     // Public keys that are exposed to the client
     apiBase: process.env.BASE_URL || "/api",
+    auth:{
+      computed:{
+        origin: process.env.ORIGIN
+      }
+    }
   },
   app: {
     head: {
