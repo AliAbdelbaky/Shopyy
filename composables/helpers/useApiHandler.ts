@@ -6,7 +6,7 @@ export interface ApiResponse<T> {
 type Headers = [string, string][] | Record<string, string>;
 
 export default async function (endPoint: string): Promise<ApiResponse<any[]>> {
-  const baseURL = computed(() => useRuntimeConfig().apiBase);
+  const baseURL = computed(() => useRuntimeConfig().public.apiBase);
   const langCookie = useCookie("lang").value as "ar" | "en";
   console.log({ langCookie });
 

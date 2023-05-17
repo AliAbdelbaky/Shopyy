@@ -1,5 +1,6 @@
 <template>
   <pre>
+    sdasd
     {{ data }}
   </pre>
   <MainComp />
@@ -27,7 +28,8 @@
 // @ts-ignore
 import MainComp from "~/components/website/landing";
 import BaseContainer from "~/components/global/BaseContainer.vue";
-const { data } = await useFetch("/api/auth/me");
+const headers = useRequestHeaders(["cookie"]) as HeadersInit;
+const { data } = await useFetch("/api/token", { headers });
 // import { QBtnProps, QNotifyOptions, useQuasar } from "quasar";
 
 // const { dialog, bottomSheet, loading, loadingBar, notify, dark, screen } =
