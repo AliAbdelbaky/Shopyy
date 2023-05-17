@@ -8,16 +8,7 @@ export default defineNuxtConfig({
     // origin: process.env.ORIGIN,
     AUTH_SECRET: process.env.AUTH_SECRET,
     // Public keys that are exposed to the client
-    public: {
-      apiBase: process.env.BASE_URL || "/api",
-      // auth: {
-      //   computed: {
-      //     origin: "http://localhost:3000",
-      //     pathname: "http://localhost:3000",
-      //     fullBaseUrl: "http://localhost:3000",
-      //   },
-      // },
-    },
+    apiBase: process.env.BASE_URL || "/api",
   },
   app: {
     head: {
@@ -79,5 +70,6 @@ export default defineNuxtConfig({
   },
   auth: {
     globalAppMiddleware: true,
+    origin: process.env.ORIGIN,
   },
 });

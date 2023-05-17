@@ -88,7 +88,7 @@
         label="Continue"
         size="md"
         class="tw-opacity-50 tw-transition-all hover:tw-opacity-100 !tw-py-3"
-        @click="onSubmit"
+        @click="submitWithCredentials"
       />
       <q-btn
         v-if="isLogin"
@@ -141,6 +141,13 @@ const { status, data, signIn, signOut } = useAuth();
 const loggedIn = computed(() => status.value === "authenticated");
 const loginIn = async (method: string) => {
   await signIn(method, { callbackUrl: "/" });
+};
+const submitWithCredentials = async () => {
+  await signIn("credentials", {
+    email: "test@gmai.cionm",
+    password: "test",
+    callbackUrl: "/",
+  });
 };
 </script>
 
