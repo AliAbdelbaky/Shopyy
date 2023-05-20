@@ -30,8 +30,6 @@ export default NuxtAuthHandler({
         // that is false/null if the credentials are invalid.
         // NOTE: THE BELOW LOGIC IS NOT SAFE OR PROPER FOR AUTHENTICATION!
         console.log(credentials);
-        console.log(useRuntimeConfig())
-
         const user = {
           id: "1",
           name: "J Smith",

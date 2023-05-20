@@ -151,7 +151,8 @@ watch(route, (newRoute: any) => {
   // route.params
 });
 onMounted(() => {
-  console.log(data.value, pending.value);
-  // refresh();
+  if (state.data.items.length === 0 && !pending.value) {
+    refresh();
+  }
 });
 </script>
