@@ -1,4 +1,5 @@
 import GithubProvider from "next-auth/providers/github";
+import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NuxtAuthHandler } from "#auth";
 
@@ -14,6 +15,11 @@ export default NuxtAuthHandler({
     GithubProvider.default({
       clientId: useRuntimeConfig().GITHUB_CLIENT_ID,
       clientSecret: useRuntimeConfig().GITHUB_CLIENT_SECRET,
+    }),
+    // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
+    FacebookProvider.default({
+      clientId: "9a82b532b4538c675980fdcf4331cebd",
+      clientSecret: "214201248079839|sERAqFM5syI04S604dP8tWLWRBI"
     }),
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     CredentialsProvider.default({
