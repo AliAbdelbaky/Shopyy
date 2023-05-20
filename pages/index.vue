@@ -1,8 +1,8 @@
 <template>
-  <pre>
+  <!-- <pre>
     sdasd
     {{ data }}
-  </pre>
+  </pre> -->
   <MainComp />
   <!-- <q-page class="q-pl-lg">
     <p class="text-h6 q-pt-md">Plugin Showcase</p>
@@ -28,8 +28,9 @@
 // @ts-ignore
 import MainComp from "~/components/website/landing";
 import BaseContainer from "~/components/global/BaseContainer.vue";
-const headers = useRequestHeaders(["cookie"]) as HeadersInit;
-const { data } = await useFetch("/api/token", { headers });
+// const headers = useRequestHeaders(["cookie"]) as HeadersInit;
+// const { data } = await useFetch("/api/token", { headers });
+// console.log(data.value)
 // import { QBtnProps, QNotifyOptions, useQuasar } from "quasar";
 
 // const { dialog, bottomSheet, loading, loadingBar, notify, dark, screen } =

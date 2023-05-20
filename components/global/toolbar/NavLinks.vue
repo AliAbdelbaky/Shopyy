@@ -7,11 +7,23 @@
       :to="item"
       >{{ item }}</nuxt-link
     >
+    <q-btn
+      v-if="loggedin"
+      @click="signOut()"
+      color="transparent"
+      label="sign out"
+      size="md"
+      class="tw-opacity-50 tw-transition-all hover:tw-opacity-100 hover:tw-bg-slate-300 !tw-py-3 !tw-text-black"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-const links = ["auth", "link2", "link3", "link4", "link5", "link6"];
+const links = ["auth", "Dashboard"];
+
+const { status, data, signIn, signOut } = useAuth();
+
+const loggedin = computed(() => status.value === "authenticated");
 </script>
 
 <style scoped lang="scss">
