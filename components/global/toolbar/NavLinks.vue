@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-const links = ["auth", "Dashboard"];
+const links = ["auth", "dashboard"];
 
 const { status, data, signIn, signOut } = useAuth();
 

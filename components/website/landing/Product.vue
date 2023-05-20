@@ -146,8 +146,12 @@ watch(route, (newRoute: any) => {
   const page = Number(newRoute.query.page);
   if (page > 0 && page !== current.value) {
     current.value = page;
-    updatePagination(page)
+    updatePagination(page);
   }
   // route.params
+});
+onMounted(() => {
+  console.log(data.value, pending.value);
+  // refresh();
 });
 </script>

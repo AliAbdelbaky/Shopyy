@@ -8,7 +8,7 @@ export default NuxtAuthHandler({
     // Change the default behavior to use `/login` as the path for the sign-in page
     signIn: "/auth",
   },
-  secret: useRuntimeConfig().AUTH_SECRET,
+  secret: "9ac2e968eaabccca01c00fed",
   providers: [
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     GithubProvider.default({
